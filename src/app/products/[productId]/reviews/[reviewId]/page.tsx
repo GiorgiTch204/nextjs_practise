@@ -1,3 +1,4 @@
+import {notFound} from "next/navigation";
 import Link from "next/link";
 
 const reviewList = [
@@ -12,6 +13,7 @@ export default async function ProductReview({
     params: Promise <{productId: string }>;
 }){
     const { productId } = await params;
+    
     return (
         <div>
             <h1>Reviews for product {productId}</h1>
