@@ -1,12 +1,19 @@
-"use client";
+import { Metadata } from "next";
 
-export default function ProductList(){
-    return(
-        <>
-            <h1>Product List</h1>
-            <h2>Product 1</h2>
-            <h2>Product 2</h2>
-            <h2>Product 3</h2>
-        </>
-    )
+type Props = {
+    params: Promise<{ProductId: string}>
+}
+
+export const generateMetadata = async ({params}:Props): Promise<Metadata> => {
+    const id = (await params).ProductId;
+    return {
+        title: `Product ${id}`
+    }
+}
+
+export default async function ProductList({
+    params,
+}:Props) {
+    const productId = (await params).ProductId;
+    return <h1>Details about product {productId}</h1>  
 };
