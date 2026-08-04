@@ -1,12 +1,12 @@
 import Link from "next/link";
+import { use } from "react";
 
-export default async function NewsArticle({ params, searchParams }: {
+export default  function NewsArticle({ params, searchParams }: {
     params: Promise <{ articleid: string }>;
     searchParams?: Promise<{ lang?: "en" | "es" | "ka" }>;
 }) {
-    const { articleid } = await params;
-    const searchParamsData = await searchParams;
-    const {lang = "en"} = searchParamsData || {};
+    const { articleid } = use(params);
+    const { lang = "en" } = use(searchParams ?? Promise.resolve({} as { lang?: "en" | "es" | "ka" }));
     return (
         <div>
             <h1>News Article {articleid}</h1>
