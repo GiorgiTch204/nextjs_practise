@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import "./style.css";
+import "./style.css";                                                                                                                      
 
 const navLinks = [
     {name:"Register", href:"/register"},
