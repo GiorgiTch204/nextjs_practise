@@ -17,6 +17,8 @@ export default function RootLayout({
                     }}>
                         <p>Header</p>
                 </header>
+
+                {/* This is where the page content will be rendered */}
                 {children}
 
                 <footer 
