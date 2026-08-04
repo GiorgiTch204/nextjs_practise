@@ -1,7 +1,30 @@
 "use client";
 
-export default function ErrorBoundary({error} :{
+import {useRouter} from "next/navigation";
+import {startTransition} from "react";
+
+export default function ErrorBoundary({error, reset} :{
     error: Error,
+    reset: () => void;
 }){
-    return <div>{error.message}</div>
+    const router = useRouter();
+        const reload = () =>{
+            startTransition(()=>{
+                router.refresh();
+                reset();
+            });
+        };
+
+    return(
+        
+
+        <div>
+            {error.message}
+            <button onClick={reload}>Try again</button>
+        </div>
+    ) 
+}
+
+function refresh() {
+    throw new Error("Function not implemented.");
 }
