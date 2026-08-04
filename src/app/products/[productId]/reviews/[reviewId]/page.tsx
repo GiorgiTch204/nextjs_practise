@@ -1,29 +1,14 @@
-import {notFound} from "next/navigation";
-import Link from "next/link";
+import {notFound, redirect} from "next/navigation";
 
-const reviewList = [
-    { id: "1", content: "Great product!" },
-    { id: "2", content: "Not bad." },
-    { id: "3", content: "Could be better." },
-];
-
-export default async function ProductReview({
-    params,
+export default async function ProductDetails({
+  params,
 }: {
-    params: Promise <{productId: string }>;
-}){
-    const { productId } = await params;
-    
-    return (
-        <div>
-            <h1>Reviews for product {productId}</h1>
-            {reviewList.map((review) => (
-                <p key={review.id}>
-                    <Link href={`/products/${productId}/reviews/${review.id}`}>
-                        {review.content}
-                    </Link>
-                </p>
-            ))}
-        </div>
-    )
+  params: Promise<{ productId: string, reviewId: string }>;
+}) {
+  const { productId, reviewId } = await params;
+
+  if(parseInt(reviewId)>1000){
+    redirect("/products");
+  }
+  return <h1>Review {reviewId} - Product Details: {productId}</h1>;
 }
