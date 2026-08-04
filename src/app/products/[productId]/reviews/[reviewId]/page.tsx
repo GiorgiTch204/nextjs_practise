@@ -9,11 +9,11 @@ export default async function ProductDetails({
 }: {
   params: Promise<{ productId: string, reviewId: string }>;
 }) {
-    const random = getRandomInt(2);
+    // const random = getRandomInt(2);
 
-    if(random === 1){
-        throw new Error("Random Loading Review");
-    }
+    // if(random === 1){
+    //     throw new Error("Random Loading Review");
+    // }
 
     const { productId, reviewId } = await params;
 
