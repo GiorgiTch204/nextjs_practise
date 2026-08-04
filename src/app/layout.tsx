@@ -1,6 +1,6 @@
 import Link from "next/link"; 
 import { Metadata } from "next";
-
+import {ErrorWrapper} from "../app/error-wrapper";
 
 export const metadata : Metadata = {
     title: {
@@ -29,7 +29,9 @@ export default function RootLayout({
                 <Link href="/">Home Page</Link>
 
                 {/* This is where the page content will be rendered */}
-                {children}
+                <ErrorWrapper>
+                    {children}
+                </ErrorWrapper>
 
                 <footer 
                     style={{
